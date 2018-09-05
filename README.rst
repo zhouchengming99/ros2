@@ -4,20 +4,30 @@ ROS IDL stuff
 Goals
 -----
 
-* Support specifying ROS messages, services (and actions) using a subset of the [Interface Defintion Language](https://www.omg.org/spec/IDL/About-IDL/) in `.idl` files
+* Support specifying ROS messages, services (and actions) using a subset of the `Interface Defintion Language <https://www.omg.org/spec/IDL/About-IDL/>`_ in `.idl` files
+
   * Utilize format features
+
     * Group constants into enums
     * Annotations:
+
       * Comment
       * Unit
       * Range (?)
+
   * Reference constant from other `.idl` files as default value
   * Determine need for Connext/OpenSplice-specific `.idl` files
+
 * Continue to support the existing feature set of `.msg` and `.srv` files
 * Provide a script to convert `.msg` / `.srv` (/ `.action`) files to `.idl`
 * Determine types and their mapping into each language
+
   * Unicode support
+
+    * Ensure that this is feasible with member-based access and doesn't require method-based access (http://design.ros2.org/articles/serialization.html#member-based-vs-method-based-access)
+
   * Efficient handling of binary data (e.g. the image messsage)
+
 * Distinguish a "strict" (default?) mode where ROS conventions apply vs. a "relaxed" mode where the user can diverge from those (?)
 
 * Support evolution of message definitions (?)
@@ -27,6 +37,7 @@ Goals
 * Default initizlization if message fields in C (?)
 * Default values for complex fields
 * Provide e.g. `to_yaml` functions
+* Support providing additional "helper" functions (e.g. C++ constructor with poitional arguments for Vector3)
 
 Discussions to be considered
 ----------------------------
@@ -37,6 +48,7 @@ Tickets to be considered
 ------------------------
 
 * Review primitive types: https://github.com/ros2/rosidl/issues/190
+
   * Deprecated byte char: https://github.com/ros2/rosidl/pull/191
   * remap `char` and `byte` to `int8_t` and `uint8_t`: https://github.com/ros2/design/pull/130
   * use `uint8` instead of deprecated `byte`: https://github.com/ros2/rcl_interfaces/pull/13
@@ -47,12 +59,16 @@ Tickets to be considered
 * ROS2 message format should support enums: https://github.com/ros2/rosidl/issues/260
 
 * Wide string: https://github.com/ros2/design/pull/117
+
   * add multibyte tests to Primitives: https://github.com/ros2/system_tests/pull/194
   * encode/decode all string as utf8: https://github.com/ros2/rosidl/pull/209
+
+* Optional Fields in Message: https://discourse.ros.org/t/optional-fields-in-message/991
 
 * Design doc for C mapping: https://github.com/ros2/design/issues/126
 
 * Collisions with keywords: https://github.com/ros2/design/pull/172
+
   * Consider narrowing the scope of `#undef ERROR` in generated message code: https://github.com/ros2/rosidl/issues/118
 
 * [rosidl_generator_py] Provide field type in the generated message classes: https://github.com/ros2/rosidl/issues/243
@@ -216,9 +232,7 @@ DDS -> C++
 
 This is what `rosidl_typesupport_connext_cpp` currently uses.
 
-```
-rtiddsgen -d cpp -language C++ -namespace -update typefiles -unboundedSupport Primitives.idl
-```
+``rtiddsgen -d cpp -language C++ -namespace -update typefiles -unboundedSupport Primitives.idl``
 
 The C++ class has **public** members ending with `_`.
 The C++ class has (const) getter and setter methods.
@@ -242,9 +256,7 @@ The C++ class has (const) getter and setter methods.
 DDS -> C++11
 ------------
 
-```
-rtiddsgen -d cpp11 -language C++11 -update typefiles -unboundedSupport Primitives.idl
-```
+``rtiddsgen -d cpp11 -language C++11 -update typefiles -unboundedSupport Primitives.idl``
 
 The C++ class has **private** members ending with `_`.
 The C++ class has (const) getter and setter methods.
