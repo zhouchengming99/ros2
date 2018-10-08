@@ -43,6 +43,7 @@ Discussions to be considered
 ----------------------------
 
 * Discussion about how to add a new PRIMITIVE_TYPES to rosidl(msg): https://discourse.ros.org/t/discussion-about-how-to-add-a-new-primitive-types-to-rosidl-msg/4607
+* Get ROS2 message fields from Python messages: https://answers.ros.org/question/304512/get-ros2-message-fields-from-python-messages/
 
 Tickets to be considered
 ------------------------
