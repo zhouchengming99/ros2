@@ -8,7 +8,7 @@ Goals
 
   * Utilize format features
 
-    * [ ] Group constants into enums
+    * [ ] Group constants into enums: https://github.com/ros2/rosidl/issues/260
     * [x] Annotations:
 
       * [x] Comment
@@ -22,7 +22,7 @@ Goals
 * [x] Provide a script to convert ``.msg`` / ``.srv`` (/ ``.action``) files to ``.idl``
 * [x] Determine types and their mapping into each language
 
-  * [ ] Unicode support
+  * [ ] Unicode support: https://github.com/ros2/rosidl/issues/352
 
     * Ensure that this is feasible with member-based access and doesn't require method-based access (http://design.ros2.org/articles/serialization.html#member-based-vs-method-based-access)
 
@@ -34,9 +34,10 @@ Goals
 * [ ] Support for optional fields (which don't appear on the wire if not set) (?)
 * [ ] Configure custom upper bounds (at generation time, not specified in the IDL) (?)
 * [x] Support keys, just passing through to DDS vendor
-* [ ] Default initialization of message fields in C (?)
-* [ ] Default values for complex fields
-* [ ] Provide e.g. ``to_yaml`` functions
+* [ ] Default initialization of message fields in C: https://github.com/ros2/ros2/issues/397
+* [ ] Default initialization of message fields in Python: https://github.com/ros2/ros2/issues/420
+* [ ] Default values for complex fields: https://github.com/ros2/rosidl/issues/206
+* [ ] Provide e.g. ``to_yaml`` functions: https://github.com/ros2/rosidl/issues/259
 * [ ] Support providing additional "helper" functions (e.g. C++ constructor with positional arguments for Vector3)
 
 Discussions to be considered
