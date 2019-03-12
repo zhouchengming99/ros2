@@ -4,40 +4,40 @@ ROS IDL stuff
 Goals
 -----
 
-* Support specifying ROS messages, services (and actions) using a subset of the `Interface Defintion Language <https://www.omg.org/spec/IDL/About-IDL/>`_ in `.idl` files
+* [x] Support specifying ROS messages, services (and actions) using a subset of the `Interface Defintion Language <https://www.omg.org/spec/IDL/About-IDL/>`_ in ``.idl`` files
 
   * Utilize format features
 
-    * Group constants into enums
-    * Annotations:
+    * [ ] Group constants into enums
+    * [x] Annotations:
 
-      * Comment
-      * Unit
+      * [x] Comment
+      * [x] Unit
       * Range (?)
 
-  * Reference constant from other `.idl` files as default value
-  * Determine need for Connext/OpenSplice-specific `.idl` files
+  * [ ] Reference constant from other ``.idl`` files as default value
+  * [x] Determine need for Connext/OpenSplice-specific ``.idl`` files, still necessary since neither of them supports the ``(u)int<N>`` types
 
-* Continue to support the existing feature set of `.msg` and `.srv` files
-* Provide a script to convert `.msg` / `.srv` (/ `.action`) files to `.idl`
-* Determine types and their mapping into each language
+* [x] Continue to support the existing feature set of ``.msg`` and ``.srv`` files
+* [x] Provide a script to convert ``.msg`` / ``.srv`` (/ ``.action``) files to ``.idl``
+* [x] Determine types and their mapping into each language
 
-  * Unicode support
+  * [ ] Unicode support
 
     * Ensure that this is feasible with member-based access and doesn't require method-based access (http://design.ros2.org/articles/serialization.html#member-based-vs-method-based-access)
 
-  * Efficient handling of binary data (e.g. the image messsage)
+  * [ ] Efficient handling of binary data (e.g. the image messsage), use ``numpy`` in Python
 
-* Distinguish a "strict" (default?) mode where ROS conventions apply vs. a "relaxed" mode where the user can diverge from those (?)
+* [ ] Distinguish a "strict" (default?) mode where ROS conventions apply vs. a "relaxed" mode where the user can diverge from those (?)
 
-* Support evolution of message definitions (?)
-* Support for optional fields (which don't appear on the wire if not set) (?)
-* Configure custom upper bounds (at generation time, not specified in the IDL) (?)
-* Support keys (?)
-* Default initizlization if message fields in C (?)
-* Default values for complex fields
-* Provide e.g. `to_yaml` functions
-* Support providing additional "helper" functions (e.g. C++ constructor with poitional arguments for Vector3)
+* [ ] Support evolution of message definitions (?)
+* [ ] Support for optional fields (which don't appear on the wire if not set) (?)
+* [ ] Configure custom upper bounds (at generation time, not specified in the IDL) (?)
+* [x] Support keys, just passing through to DDS vendor
+* [ ] Default initialization of message fields in C (?)
+* [ ] Default values for complex fields
+* [ ] Provide e.g. ``to_yaml`` functions
+* [ ] Support providing additional "helper" functions (e.g. C++ constructor with positional arguments for Vector3)
 
 Discussions to be considered
 ----------------------------
