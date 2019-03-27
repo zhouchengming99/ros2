@@ -26,7 +26,7 @@ Goals
 
     * Ensure that this is feasible with member-based access and doesn't require method-based access (http://design.ros2.org/articles/serialization.html#member-based-vs-method-based-access)
 
-  * [ ] Efficient handling of binary data (e.g. the image messsage), use ``numpy`` in Python
+  * [x] Efficient handling of binary data (e.g. the image messsage), use ``numpy.ndarray`` / `array.array`` in Python
 
 * [ ] Distinguish a "strict" (default?) mode where ROS conventions apply vs. a "relaxed" mode where the user can diverge from those (?)
 
