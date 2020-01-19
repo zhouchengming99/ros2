@@ -1,0 +1,47 @@
+# How to play with the codebase?
+Documentation is at https://index.ros.org/doc/ros2/
+
+## Get the vcs tool
+sudo apt-get install python3-vcstool
+
+## Get the codebase from ros2.repos
+mkdir src
+vcs import src < ros2.repos
+
+## Update with upstream
+vcs custom src --git --args pull
+
+## Retrive diff or status
+vcs diff src
+vcs status src
+OR
+vcs custom src --git --args diff
+vcs custom src --git --args status
+vcs custom src --git --args status -s
+
+## Discard all changes and delete
+vcs custom src --git --args reset --hard HEAD
+
+# Ignore these packages
+touch src/ros-visualization/qt_gui_core/COLCON_IGNORE
+touch src/ros-visualization/rqt/COLCON_IGNORE
+touch src/ros/resource_retriever/COLCON_IGNORE
+touch src/ros2/rcl_logging/rcl_logging_log4cxx/COLCON_IGNORE
+touch src/ros2/rviz/COLCON_IGNORE
+
+# How to build on x86 or xavier?
+
+# How to cross compile using docker image?
+docker run -it --rm -v `pwd`:/root/build_ws/  reg.docker.alibaba-inc.com/etlab_hpc/ros2_cross_compile:compiler
+
+## Link all libraries created by ros2 into sysroot, or ld binutils can't find them when prefix sysroot to rpath in library table
+mkdir install/lib
+mkdir /system_dep_himix/xrobot
+ln -s /root/build_ws/install/lib /system_dep_himix/xrobot/
+
+## Modify /system_dep_himix/etc/ld.so.conf as below
+/xrobot/lib
+/usr/local/lib
+/usr/local/lib/aarch64-linux-gnu
+/lib/aarch64-linux-gnu
+/usr/lib/aarch64-linux-gnu
